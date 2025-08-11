@@ -1,4 +1,4 @@
-import Zariyaa from "../components/ui/Zariyaa";
+import Zariyaa from "../Zariyaa";
 
 export default function Page() {
   return <Zariyaa />;
