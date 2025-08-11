@@ -2,57 +2,48 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ShoppingBag, Sparkles, Leaf, Scissors, Truck, Instagram, Mail, Phone, Star } from "lucide-react";
+import { ShoppingBag, Sparkles, Leaf, Scissors, Truck, Instagram, Mail, Phone, Star, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
+// COLORS (Regal Heritage)
+// Maroon #6B1D1D  | Gold #C9A646 | Ivory #FAF5E6 | Emerald #0C3B2E
+
 const products = [
   {
-    id: "p1",
-    name: "Kanjivaram Silk — Emerald & Magenta",
-    price: "£289",
-    tags: ["Pure Silk", "Zari Work"],
-    image: "https://images.unsplash.com/photo-1584917865442-fd1df1f0ecf9?q=80&w=1600&auto=format&fit=crop"
-  },
-  {
-    id: "p2",
-    name: "Banarasi Brocade — Rose Gold",
-    price: "£219",
-    tags: ["Handloom", "Festive"],
+    id: "s1",
+    name: "Kanjivaram Silk — Emerald with Antique Gold Zari",
+    price: "₹22,500",
+    tags: ["Pure Silk", "Bridal"],
     image: "https://images.unsplash.com/photo-1542060748-10c28b62716a?q=80&w=1600&auto=format&fit=crop"
   },
   {
-    id: "p3",
-    name: "Chanderi Cotton Silk — Sand & Saffron",
-    price: "£149",
-    tags: ["Lightweight", "Everyday"],
+    id: "s2",
+    name: "Banarasi Brocade — Maroon & Gold Border",
+    price: "₹17,900",
+    tags: ["Handloom", "Festive"],
+    image: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1600&auto=format&fit=crop"
+  },
+  {
+    id: "s3",
+    name: "Chanderi Silk Cotton — Ivory with Zari Pallu",
+    price: "₹8,950",
+    tags: ["Lightweight", "Everyday Luxury"],
     image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=1600&auto=format&fit=crop"
   },
   {
-    id: "p4",
-    name: "Organza — Ivory Petals",
-    price: "£129",
-    tags: ["Sheer", "Contemporary"],
-    image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1600&auto=format&fit=crop"
+    id: "s4",
+    name: "Linen Saree — Emerald with Contrast Border",
+    price: "₹6,500",
+    tags: ["Breathable", "Summer"],
+    image: "https://images.unsplash.com/photo-1584917865442-fd1df1f0ecf9?q=80&w=1600&auto=format&fit=crop"
   },
 ];
 
 const testimonials = [
-  {
-    name: "Ananya R.",
-    text: "The fabric feels luxurious and the drape is unreal. Zariyaa has my heart!",
-    rating: 5,
-  },
-  {
-    name: "Meera S.",
-    text: "Customer service was warm, and the blouse piece quality is superb.",
-    rating: 5,
-  },
-  {
-    name: "Priya K.",
-    text: "Loved the texture shots—what I received matched perfectly.",
-    rating: 4,
-  },
+  { name: "Ananya R.", text: "Zariyaa’s silk feels luxurious and the zari work gleams beautifully.", rating: 5 },
+  { name: "Meera S.", text: "Lightweight cottons are perfect for daily wear. Great service!", rating: 5 },
+  { name: "Priya K.", text: "Photos matched the fabric perfectly—love the texture close-ups.", rating: 4 },
 ];
 
 export default function Zariyaa() {
@@ -61,31 +52,40 @@ export default function Zariyaa() {
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
-    alert(`Thanks! We'll email a 10% welcome code to ${email}.`);
+    alert(`Thanks! We'll email a welcome code to ${email}.`);
     setEmail("");
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-50 via-white to-rose-50 text-slate-900">
+    <div className="min-h-screen bg-[#FAF5E6] text-slate-900">
+      {/* Floating WhatsApp (UK for now; add India number when ready) */}
+      <a
+        href="https://wa.me/447384056764?text=Hi%20Zariyaa%2C%20I%20have%20a%20question%20about%20your%20sarees"
+        target="_blank"
+        rel="noreferrer"
+        className="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-white shadow-lg"
+        aria-label="Chat on WhatsApp"
+      >
+        <MessageCircle className="h-5 w-5" /> WhatsApp
+      </a>
+
       {/* Header */}
-      <header className="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/70 border-b border-amber-100">
+      <header className="sticky top-0 z-40 border-b bg-[#FAF5E6]/90 backdrop-blur">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
-          <a href="#home" className="flex items-center gap-2 font-semibold text-xl tracking-wide">
-            <Sparkles className="h-5 w-5" aria-hidden />
+          <a href="#home" className="flex items-center gap-2 font-heading text-2xl tracking-wide text-[#6B1D1D]">
+            <Sparkles className="h-5 w-5 text-[#C9A646]" aria-hidden />
             <span>Zariyaa</span>
           </a>
           <div className="hidden gap-6 md:flex">
-            <a href="#shop" className="hover:text-amber-700">Shop</a>
-            <a href="#story" className="hover:text-amber-700">Our Story</a>
-            <a href="#craft" className="hover:text-amber-700">Craft</a>
-            <a href="#faq" className="hover:text-amber-700">FAQ</a>
-            <a href="#contact" className="hover:text-amber-700">Contact</a>
+            <a href="#shop" className="hover:text-[#6B1D1D]">Shop</a>
+            <a href="#story" className="hover:text-[#6B1D1D]">Our Story</a>
+            <a href="#craft" className="hover:text-[#6B1D1D]">Craft</a>
+            <a href="#faq" className="hover:text-[#6B1D1D]">FAQ</a>
+            <a href="#contact" className="hover:text-[#6B1D1D]">Contact</a>
           </div>
           <div className="flex items-center gap-2">
-            <Button className="rounded-2xl">
-              <a href="https://wa.me/0000000000" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp" className="inline-flex items-center">
-                <ShoppingBag className="mr-2 h-4 w-4" /> Shop WhatsApp
-              </a>
+            <Button className="rounded-2xl bg-[#C9A646] hover:bg-[#b8942e]">
+              <a href="#shop" className="inline-flex items-center"><ShoppingBag className="mr-2 h-4 w-4" /> Shop now</a>
             </Button>
           </div>
         </nav>
@@ -93,27 +93,27 @@ export default function Zariyaa() {
 
       {/* Hero */}
       <section id="home" className="relative overflow-hidden">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-4 py-20 sm:px-6 md:grid-cols-2">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-4 py-14 sm:px-6 md:grid-cols-2">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-tight">
-              Golden threads,
-              <br />
-              <span className="bg-gradient-to-r from-amber-600 to-rose-600 bg-clip-text text-transparent">timeless drapes.</span>
+            <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl leading-tight text-[#6B1D1D]">
+              Grace in Every Thread
             </h1>
-            <p className="mt-5 max-w-prose text-lg text-slate-700">
-              Handcrafted sarees woven with heritage techniques and a modern eye. Each Zariyaa piece is photographed in natural light with detailed texture shots—so you know exactly what you’re getting.
+            <p className="mt-5 max-w-prose text-lg text-[#0C3B2E]">
+              Handloom sarees & timeless accessories. From pure silks to feather-light cottons—crafted with authentic zari and ethical sourcing.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <Button className="rounded-2xl">
+              <Button className="rounded-2xl bg-[#C9A646] hover:bg-[#b8942e]">
                 <a href="#shop" className="inline-flex items-center"><ShoppingBag className="mr-2 h-5 w-5" /> Shop collection</a>
               </Button>
-              <Button variant="outline" className="rounded-2xl">
-                <a href="https://wa.me/0000000000" target="_blank" rel="noreferrer" className="inline-flex items-center"><Phone className="mr-2 h-5 w-5" /> Talk on WhatsApp</a>
+              <Button variant="outline" className="rounded-2xl border-[#C9A646] text-[#6B1D1D]">
+                <a href="https://wa.me/447384056764" target="_blank" rel="noreferrer" className="inline-flex items-center">
+                  <Phone className="mr-2 h-5 w-5" /> WhatsApp us
+                </a>
               </Button>
             </div>
-            <div className="mt-6 flex items-center gap-4 text-sm text-slate-600">
-              <div className="flex items-center gap-1"><Sparkles className="h-4 w-4" /> Pure fabric promise</div>
-              <div className="flex items-center gap-1"><Truck className="h-4 w-4" /> Fast, insured shipping</div>
+            <div className="mt-6 flex items-center gap-4 text-sm text-[#6B1D1D]">
+              <div className="flex items-center gap-1"><Sparkles className="h-4 w-4 text-[#C9A646]" /> Pure fabric promise</div>
+              <div className="flex items-center gap-1"><Truck className="h-4 w-4 text-[#C9A646]" /> Fast, insured shipping</div>
             </div>
           </motion.div>
 
@@ -121,11 +121,11 @@ export default function Zariyaa() {
             <div className="relative">
               <img
                 src="https://images.unsplash.com/photo-1516826957135-700dedea698c?q=80&w=1400&auto=format&fit=crop"
-                alt="Close-up of zari work on silk fabric"
+                alt="Silk saree with antique gold zari"
                 className="h-[480px] w-full rounded-3xl object-cover shadow-xl"
               />
               <div className="absolute -bottom-4 -right-4 rounded-2xl bg-white/90 p-3 shadow-lg">
-                <div className="flex items-center gap-2 text-amber-700"><Star className="h-4 w-4" /> 4.9/5 by 500+ customers</div>
+                <div className="flex items-center gap-2 text-[#6B1D1D]"><Star className="h-4 w-4 text-[#C9A646]" /> 4.9/5 by 500+ customers</div>
               </div>
             </div>
           </motion.div>
@@ -137,18 +137,18 @@ export default function Zariyaa() {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
           {[
             { icon: Scissors, title: "Handloom Finish", text: "Meticulous falls, pico & tassels." },
-            { icon: Leaf, title: "Natural Fibres", text: "Pure silk, linen & cotton." },
+            { icon: Leaf, title: "Natural Fibres", text: "Pure silk, cotton & linen." },
             { icon: Sparkles, title: "Authentic Zari", text: "Detailed texture shots for trust." },
-            { icon: Truck, title: "Easy Shipping", text: "Tracked, insured, global." },
-          ].map((f, i) => (
-            <Card key={f.title} className="rounded-2xl">
+            { icon: Truck, title: "Insured Shipping", text: "Tracked, global delivery." },
+          ].map((f) => (
+            <Card key={f.title} className="rounded-2xl border-[#E9DDC2] bg-white">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-base">
-                  <f.icon className="h-5 w-5" /> {f.title}
+                <CardTitle className="flex items-center gap-2 text-base text-[#6B1D1D]">
+                  <f.icon className="h-5 w-5 text-[#C9A646]" /> {f.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-slate-600">{f.text}</p>
+                <p className="text-slate-700">{f.text}</p>
               </CardContent>
             </Card>
           ))}
@@ -159,35 +159,35 @@ export default function Zariyaa() {
       <section id="shop" className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
         <div className="mb-8 flex items-end justify-between">
           <div>
-            <h2 className="font-serif text-3xl sm:text-4xl">Featured sarees</h2>
-            <p className="mt-2 text-slate-600">Curated weaves with detailed photos and transparent care info.</p>
+            <h2 className="font-heading text-3xl sm:text-4xl text-[#6B1D1D]">Featured sarees</h2>
+            <p className="mt-2 text-slate-700">Curated weaves with detailed photos and transparent care info.</p>
           </div>
-          <a href="#contact" className="hidden text-sm underline md:inline">Looking for something specific?</a>
+          <a href="#contact" className="hidden text-sm underline md:inline text-[#6B1D1D]">Looking for something specific?</a>
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {products.map((p, idx) => (
             <motion.div key={p.id} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: idx * 0.06 }}>
-              <Card className="overflow-hidden rounded-3xl">
+              <Card className="overflow-hidden rounded-3xl border-[#E9DDC2] bg-white">
                 <img src={p.image} alt={p.name} className="h-64 w-full object-cover" />
                 <CardHeader>
-                  <CardTitle className="text-lg">{p.name}</CardTitle>
+                  <CardTitle className="text-lg text-[#6B1D1D]">{p.name}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="mb-3 flex flex-wrap gap-2">
                     {p.tags.map((t) => (
-                      <span key={t} className="rounded-full border border-amber-200 px-2 py-0.5 text-xs text-amber-700">
+                      <span key={t} className="rounded-full border border-[#E9DDC2] px-2 py-0.5 text-xs text-[#0C3B2E]">
                         {t}
                       </span>
                     ))}
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="font-semibold">{p.price}</span>
-                    <Button className="rounded-xl">
-                      <a href="https://wa.me/0000000000" target="_blank" rel="noreferrer">Enquire</a>
+                    <span className="font-semibold text-[#6B1D1D]">{p.price}</span>
+                    <Button className="rounded-xl bg-[#C9A646] hover:bg-[#b8942e]">
+                      <a href="https://wa.me/447384056764" target="_blank" rel="noreferrer">Enquire</a>
                     </Button>
                   </div>
-                  <p className="mt-3 text-xs text-slate-500">
+                  <p className="mt-3 text-xs text-slate-600">
                     Includes blouse piece. Care: Dry clean recommended. Ships in 2–4 days.
                   </p>
                 </CardContent>
@@ -201,12 +201,12 @@ export default function Zariyaa() {
       <section id="story" className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
         <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
           <img
-            src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1600&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1503342452485-86FF0a505491?q=80&w=1600&auto=format&fit=crop"
             alt="Artisan weaving on a traditional handloom"
             className="h-[420px] w-full rounded-3xl object-cover shadow-lg"
           />
           <div>
-            <h3 className="font-serif text-3xl">Our story</h3>
+            <h3 className="font-heading text-3xl text-[#6B1D1D]">Our story</h3>
             <p className="mt-3 text-slate-700">
               Born in a home studio and nurtured by artisan clusters across India, Zariyaa celebrates the poetry of warp and weft. We partner directly with weavers to bring ethical, transparent pricing and heirloom-worthy craft.
             </p>
@@ -221,18 +221,18 @@ export default function Zariyaa() {
 
       {/* Testimonials */}
       <section className="mx-auto max-w-7xl px-4 pb-8 sm:px-6">
-        <h3 className="font-serif text-2xl">What customers say</h3>
+        <h3 className="font-heading text-2xl text-[#6B1D1D]">What customers say</h3>
         <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
           {testimonials.map((t) => (
-            <Card key={t.name} className="rounded-2xl">
+            <Card key={t.name} className="rounded-2xl border-[#E9DDC2] bg-white">
               <CardContent className="pt-6">
                 <div className="mb-2 flex">
                   {Array.from({ length: t.rating }).map((_, i) => (
-                    <Star key={i} className="h-4 w-4" />
+                    <Star key={i} className="h-4 w-4 text-[#C9A646]" />
                   ))}
                 </div>
                 <p className="text-slate-700">“{t.text}”</p>
-                <p className="mt-3 text-sm font-medium">— {t.name}</p>
+                <p className="mt-3 text-sm font-medium text-[#6B1D1D]">— {t.name}</p>
               </CardContent>
             </Card>
           ))}
@@ -241,29 +241,29 @@ export default function Zariyaa() {
 
       {/* FAQ */}
       <section id="faq" className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
-        <h3 className="font-serif text-2xl">FAQ</h3>
+        <h3 className="font-heading text-2xl text-[#6B1D1D]">FAQ</h3>
         <div className="mt-6 space-y-3">
-          <details className="rounded-xl border border-amber-200 bg-white p-4 open:shadow-sm">
-            <summary className="cursor-pointer font-medium">Is the blouse piece included?</summary>
-            <p className="mt-2 text-slate-700">Yes, unless marked otherwise. Product pages will clearly mention blouse length and any embroidery.</p>
+          <details className="rounded-xl border border-[#E9DDC2] bg-white p-4 open:shadow-sm">
+            <summary className="cursor-pointer font-medium text-[#6B1D1D]">Is the blouse piece included?</summary>
+            <p className="mt-2 text-slate-700">Yes, unless marked otherwise. Product pages mention blouse length and any embroidery.</p>
           </details>
-          <details className="rounded-xl border border-amber-200 bg-white p-4 open:shadow-sm">
-            <summary className="cursor-pointer font-medium">How do I care for my saree?</summary>
-            <p className="mt-2 text-slate-700">For silk and zari work, dry clean is recommended. For cotton/linen, gentle hand wash in cold water with mild detergent. Avoid direct sun drying.</p>
+          <details className="rounded-xl border border-[#E9DDC2] bg-white p-4 open:shadow-sm">
+            <summary className="cursor-pointer font-medium text-[#6B1D1D]">How do I care for my saree?</summary>
+            <p className="mt-2 text-slate-700">Silk/zari: dry clean. Cotton/linen: gentle hand wash cold, mild detergent, shade dry.</p>
           </details>
-          <details className="rounded-xl border border-amber-200 bg-white p-4 open:shadow-sm">
-            <summary className="cursor-pointer font-medium">Shipping & returns</summary>
-            <p className="mt-2 text-slate-700">Orders ship in 2–4 business days with tracking. Returns within 7 days if unused and with tags intact. Tailored blouses are final sale.</p>
+          <details className="rounded-xl border border-[#E9DDC2] bg-white p-4 open:shadow-sm">
+            <summary className="cursor-pointer font-medium text-[#6B1D1D]">Shipping & returns</summary>
+            <p className="mt-2 text-slate-700">Orders ship in 2–4 business days with tracking. Returns within 7 days if unused and with tags.</p>
           </details>
         </div>
       </section>
 
       {/* Newsletter / CTA */}
       <section className="mx-auto max-w-5xl px-4 pb-20 sm:px-6">
-        <div className="grid grid-cols-1 gap-6 rounded-3xl bg-gradient-to-r from-amber-100 to-rose-100 p-8 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 rounded-3xl bg-gradient-to-r from-[#E9DDC2] to-[#F2EAD1] p-8 md:grid-cols-2">
           <div>
-            <h3 className="font-serif text-2xl">Join the Zariyaa circle</h3>
-            <p className="mt-2 text-slate-700">Get launch updates, limited drops and a 10% welcome code.</p>
+            <h3 className="font-heading text-2xl text-[#6B1D1D]">Join the Zariyaa circle</h3>
+            <p className="mt-2 text-slate-700">Get launch updates, limited drops and a welcome code.</p>
           </div>
           <form onSubmit={handleSubscribe} className="flex items-center gap-2">
             <input
@@ -272,36 +272,36 @@ export default function Zariyaa() {
               type="email"
               required
               placeholder="you@example.com"
-              className="h-11 w-full rounded-xl border border-amber-300 bg-white px-4 outline-none focus:ring-2 focus:ring-amber-400"
+              className="h-11 w-full rounded-xl border border-[#E9DDC2] bg-white px-4 outline-none focus:ring-2 focus:ring-[#C9A646]"
             />
-            <Button className="h-11 rounded-xl">Subscribe</Button>
+            <Button className="h-11 rounded-xl bg-[#C9A646] hover:bg-[#b8942e]">Subscribe</Button>
           </form>
         </div>
       </section>
 
       {/* Footer */}
-      <footer id="contact" className="border-t border-amber-100 bg-white">
+      <footer id="contact" className="border-t border-[#E9DDC2] bg-white">
         <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
             <div>
-              <div className="flex items-center gap-2 font-semibold text-lg">
-                <Sparkles className="h-5 w-5" /> Zariyaa
+              <div className="flex items-center gap-2 font-heading text-lg text-[#6B1D1D]">
+                <Sparkles className="h-5 w-5 text-[#C9A646]" /> Zariyaa
               </div>
-              <p className="mt-3 text-sm text-slate-600">Golden threads, timeless drapes.</p>
+              <p className="mt-3 text-sm text-slate-700">Golden threads, timeless drapes.</p>
             </div>
 
             <div>
-              <h4 className="mb-2 font-medium">Shop</h4>
+              <h4 className="mb-2 font-medium text-[#6B1D1D]">Shop</h4>
               <ul className="space-y-1 text-sm text-slate-700">
-                <li><a href="#shop" className="hover:underline">All sarees</a></li>
-                <li><a href="#shop" className="hover:underline">Silk</a></li>
+                <li><a href="#shop" className="hover:underline">Silk Sarees</a></li>
                 <li><a href="#shop" className="hover:underline">Cotton & Linen</a></li>
-                <li><a href="#shop" className="hover:underline">Occasion wear</a></li>
+                <li><a href="#shop" className="hover:underline">Festive & Bridal</a></li>
+                <li><a href="#shop" className="hover:underline">Accessories</a></li>
               </ul>
             </div>
 
             <div>
-              <h4 className="mb-2 font-medium">Help</h4>
+              <h4 className="mb-2 font-medium text-[#6B1D1D]">Help</h4>
               <ul className="space-y-1 text-sm text-slate-700">
                 <li><a href="#faq" className="hover:underline">Shipping & returns</a></li>
                 <li><a href="#faq" className="hover:underline">Care guide</a></li>
@@ -310,10 +310,10 @@ export default function Zariyaa() {
             </div>
 
             <div>
-              <h4 className="mb-2 font-medium">Say hello</h4>
+              <h4 className="mb-2 font-medium text-[#6B1D1D]">Say hello</h4>
               <ul className="space-y-2 text-sm text-slate-700">
                 <li className="flex items-center gap-2"><Mail className="h-4 w-4" /> hello@zariyaa.com</li>
-                <li className="flex items-center gap-2"><Phone className="h-4 w-4" /> +44 0000 000000</li>
+                <li className="flex items-center gap-2"><Phone className="h-4 w-4" /> +44 7384 056764</li>
                 <li>
                   <a className="inline-flex items-center gap-2 hover:underline" href="https://instagram.com/" target="_blank" rel="noreferrer">
                     <Instagram className="h-4 w-4" /> Instagram
